@@ -1,7 +1,7 @@
-import { Route, NavLink, Routes, useMatch,} from 'react-router-dom'
-import './App.css'
+import {Switch, Route, Link, Routes, useMatch, useParams } from 'react-router-dom'
 const Proyecto = () => {
   const match = useMatch("/portafolio/:proyecto_id")
+  console.log(match)
   const {proyecto_id} = match.params
   return (
     <h3> Proyecto {proyecto_id} </h3>
@@ -12,8 +12,8 @@ const Portafolio =()=>{
     <div>
         <h1>Portafolio</h1>
         <ul>
-          <li><NavLink  to={'proyecto-1'}>Proyecto1</NavLink></li>
-          <li><NavLink  to={'proyecto-2'}>Proyecto2</NavLink></li>
+          <li><Link to={'proyecto-1'}>Proyecto1</Link></li>
+          <li><Link to={'proyecto-2'}>Proyecto2</Link></li>
         </ul>
         <div>
         <Routes>
@@ -31,8 +31,8 @@ function App() {
     <div>
       <nav>
         <ul>
-        <li><NavLink to='/'> Inicio </NavLink></li>
-        <li><NavLink isActive={(match,location)=> {console.log(match,location);}} to='/portafolio/'> Portafolio </NavLink></li>
+        <li><Link to='/'> Inicio </Link></li>
+        <li><Link to='/portafolio/'> Portafolio </Link></li>
           
         </ul>
       </nav>
