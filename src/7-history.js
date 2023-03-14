@@ -1,17 +1,25 @@
-import { Route, Link, Routes, Navigate, useLocation} from 'react-router-dom'
+import { Route, Link, Routes, Navigate, useNavigate, use} from 'react-router-dom'
 
 const Portafolio = () => {
    const loggedId=true
    return loggedId? <h1>Portafolio</h1> :   <Navigate to="/" />;
 }
-function useQuery() {
-  return new URLSearchParams(useLocation().search)
-}
 
 function App() {
-  const query= useQuery()
-  const cosa= query.get('cosa1')
-  console.log({cosa}) 
+  const navigate = useNavigate();
+
+ 
+  const forward = () => {
+    navigate(1);
+  };
+ 
+  const back = () => {
+    navigate(-1);
+  };
+ 
+  const push = (url) => {
+    navigate(url);
+  };
   return (
     <div>
       <nav>
@@ -22,7 +30,9 @@ function App() {
           
         </ul>
       </nav>
-      <section>
+        <button onClick={back}>Back</button>
+        <button onClick={forward}>Forward</button>
+        <section>
         <Routes>
           <Route path="/" element= {<h1>Inicio</h1>} />
           <Route path="/perfil" element= {<h1>Perfil</h1>} />
