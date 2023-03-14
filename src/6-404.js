@@ -1,25 +1,12 @@
-import { Route, Link, Routes, Navigate, useNavigate} from 'react-router-dom'
+import { Route, Link, Routes, Navigate} from 'react-router-dom'
 
 const Portafolio = () => {
    const loggedId=true
    return loggedId? <h1>Portafolio</h1> :   <Navigate to="/" />;
 }
 
-function App() {
-  const navigate = useNavigate();
 
- 
-  const forward = () => {
-    navigate(1);
-  };
- 
-  const back = () => {
-    navigate(-1);
-  };
- 
-  const push = (url) => {
-    navigate(url);
-  };
+function App() {
   return (
     <div>
       <nav>
@@ -30,9 +17,7 @@ function App() {
           
         </ul>
       </nav>
-        <button onClick={back}>Back</button>
-        <button onClick={forward}>Forward</button>
-        <section>
+      <section>
         <Routes>
           <Route path="/" element= {<h1>Inicio</h1>} />
           <Route path="/perfil" element= {<h1>Perfil</h1>} />
